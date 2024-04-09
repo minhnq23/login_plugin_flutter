@@ -23,21 +23,17 @@ class FormLogin extends StatefulWidget {
 }
 
 class _FormLoginState extends State<FormLogin> {
-
   @override
   void initState() {
     super.initState();
-
-
   }
-  Future<void> _login(String email,String password) async{
 
+  Future<void> _login(String email, String password) async {
     try {
-      await LoginPlugin().login(email,password);
+      await LoginPlugin().login(email, password);
     } catch (e) {
       print('Error calculating sum: $e');
     }
-
   }
 
   @override
@@ -106,8 +102,15 @@ class _FormLoginState extends State<FormLogin> {
                       print(passwordController.text);
                       String email = emailController.text;
                       String password = passwordController.text;
-                      _login(email,password);
-
+                      if (!email.isEmpty && !password.isEmpty) {
+                        _login(email, password);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('yêu cầu nhập đủ thông tin '),
+                          ),
+                        );
+                      }
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.blue),

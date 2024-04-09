@@ -18,8 +18,10 @@ class MethodChannelLoginPlugin extends LoginPluginPlatform {
 
   Future<void> login(String email, String password) async {
     try {
-      await methodChannel
+      var result = await methodChannel
           .invokeMethod('login', {"email": email, "password": password});
+
+      print("result chanel: $result");
     } catch (e) {
       print('Error: $e');
     }

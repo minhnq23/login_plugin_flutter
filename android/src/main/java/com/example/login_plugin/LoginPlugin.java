@@ -1,5 +1,7 @@
 package com.example.login_plugin;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -42,8 +44,11 @@ public class LoginPlugin implements FlutterPlugin, MethodCallHandler {
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     if (call.method.equals("login")) {
-      sdk.login("minh","123");
+      String email = call.argument("email");
+      String password = call.argument("password");
 
+      sdk.login(email,password);
+      result.success(true);
     } else {
       result.notImplemented();
     }
