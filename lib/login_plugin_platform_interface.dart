@@ -26,5 +26,6 @@ abstract class LoginPluginPlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
   Future<void> login(String email, String password);
 }

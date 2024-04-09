@@ -11,16 +11,17 @@ class MethodChannelLoginPlugin extends LoginPluginPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 
-   Future<void> login(String email, String password) async {
+  Future<void> login(String email, String password) async {
     try {
-      await methodChannel.invokeMethod('login', {"email": email, "password": password});
+      await methodChannel
+          .invokeMethod('login', {"email": email, "password": password});
     } catch (e) {
       print('Error: $e');
     }
   }
-
 }
